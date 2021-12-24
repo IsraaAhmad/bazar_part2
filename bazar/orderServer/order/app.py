@@ -10,6 +10,7 @@ def purchase(id):
    
     amount = request.form.get('amount')
     global catalog_counter
+    response = []
     if catalog_counter==1:
       response  = requests.put("http://192.168.1.30:3000/decrease/"+ str(id), {'amount':amount})
       catalog_counter = catalog_counter +1
@@ -19,7 +20,6 @@ def purchase(id):
     elif catalog_counter == 3:
        response  = requests.put("http://192.168.1.30:5000/decrease/"+ str(id), {'amount':amount})
        catalog_counter = 1
-    
     x = response.json()
 
     if x['response'][0]['status'] =="decreased quantity sucsesfully":
