@@ -231,5 +231,7 @@ def purchase(id):
         order_counter = 1
     return (r.content)
 
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=3500)
